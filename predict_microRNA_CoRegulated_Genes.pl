@@ -1,5 +1,7 @@
 #!/usr/bin/perl -w
 
+#  hello Kristiania
+
 use strict;
 use warnings;
 use Data::Dumper;
