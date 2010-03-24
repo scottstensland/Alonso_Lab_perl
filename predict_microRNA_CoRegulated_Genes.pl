@@ -31,6 +31,8 @@ $| = 1;  #  turn buffering off
 
 my $windows_dir = "C:/Users/Scott/Documents/data";
 my $linux_dir = "/home/scott/Documents/data";
+my $mac_OSX_dir = "/Users/scottstensland/Documents/data";
+
 my $data_dir = "IGNORE_DIR";
 my $to_plot_or_not = $NO;
 my $vary_cluster_windowing = $NO;  #  flag whether we hardcode or dynamically calculate number of clusters  RRRRRRRRR
@@ -44,10 +46,14 @@ my $value_weight_per_this_timepoint = 1;    # until necessary use value 1
 	                                        # as weight for each time point
 my $pad_len = 4;  #  determines total num chars in output string - used to in routine to pad 0 to left of given num
 
-if ($^O eq "MSWin32" ) {	$data_dir = $windows_dir;	} 
+print "OS is saying $^O\n";
 
-			elsif ($^O eq "linux" ) {	$data_dir = $linux_dir;	} else {
+if ($^O eq "MSWin32" ) { $data_dir = $windows_dir;
+
+} elsif ($^O eq "linux"  ) { $data_dir = $linux_dir;
 	
+} elsif ($^O eq "darwin" ) { $data_dir = $mac_OSX_dir;	} else {
+
 	die "ERROR - did not recognize your OS $^O so cannot define data_dir\n";
 }
 
@@ -91,10 +97,10 @@ my $microRNA_target_site_prediction_matches_file_input = "$data_dir/20100301_mir
 
 #            <><><>  output files <><><>            #
 
-my $input_dir_prefix = "$data_dir/alonso_lab/boot_20100324"; #  used to name set of output data files for plotting in pyxplot 8-)))
+my $input_dir_prefix = "$data_dir/alonso_lab/play_OSX"; #  used to name set of output data files for plotting in pyxplot 8-)))
 
 my $curr_num_run = pad_number(1, $pad_len);  #  initialize multiple run number indicator - used in file names
-my $max_num_run  = 100;  #  if $multi_run == $YES then do this number of runs
+my $max_num_run  = 5;  #  if $multi_run == $YES then do this number of runs
 my $bootstrapping_percentage_criteria = 0.80;
 
 
@@ -124,7 +130,7 @@ my $RUN_POST_PROCESSING = $NO;  #  aggregate output generated from RUN_NORMAL to
 my $RUN_DE_NOVO         = $NO;  #  read precalculated gene pair counts then de novo motif discovery
 
 #     here is repeat where dir looks like    repeat_fast_35_50_144_run01 <--> run10
-my @preset_testing_fast   = ( 85, 30, 1440,  0, 0, 0,  $NO,  $NO,  $NO, $YES,   $YES, $NO, $YES, $NO );
+my @preset_testing_fast   = ( 85, 30, 1440,  0, 0, 0,  $NO,  $NO,  $NO, $YES,   $YES, $YES, $YES, $NO );
 #my @preset_testing_fast   = ( 35, 50, 144,  0, 0, 0,  $NO,  $NO,  $YES, $YES,  $NO, $NO, $NO, $NO );
 
 my @preset_testing_medium = ( 81, 50, 0,    0, 0, 0,   $NO,  $NO,  $NO, $YES,   $NO, $NO, $NO, $NO );  # 144,   14^2 = 196
