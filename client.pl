@@ -1,5 +1,5 @@
 
-use Alonso_Lab::Motif_Discovery;
+use Alonso_Lab::BioMotifDiscovery;
 use Data::Dumper;
 use strict;
 use warnings;
@@ -7,7 +7,7 @@ use warnings;
 package main;  #  just use default namespace here in the client
 
 
-my $motif_discovery = new Motif_Discovery();
+my $motif_discovery = new BioMotifDiscovery();
 
 #print Dumper ( $item );
 
