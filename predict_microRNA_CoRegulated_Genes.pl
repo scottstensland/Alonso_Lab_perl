@@ -52,7 +52,7 @@ if ($^O eq "MSWin32" ) { $data_dir = $windows_dir;
 
 } elsif ($^O eq "linux"  ) { $data_dir = $linux_dir;
 	
-} elsif ($^O eq "darwin" ) { $data_dir = $mac_OSX_dir;	} else {
+} elsif ($^O eq "darwin" ) { $data_dir = $mac_OSX_dir; print "seeing darwin\n";	} else {
 
 	die "ERROR - did not recognize your OS $^O so cannot define data_dir\n";
 }
